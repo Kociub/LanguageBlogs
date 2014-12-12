@@ -1,18 +1,40 @@
 ﻿@{
+    @model List<LanguageBlogs.Models.Blog>
+
     ViewBag.Title = "Home";
 }
 
-<div class="jumbotron">
+<div class="row text-center">
     <h1>Language Blogs</h1>
     <p class="lead">This is a summary of blog entries in the language learning community.</p>
 </div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Blog 1</h2>
-        <p>
-            Blog 1 description
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
+<div class="container">
+
+    @foreach (var blog in Model)
+    {
+        <div class="row text-center">
+            <div class="col">
+                <h2><a href="@blog.Link">@blog.Title</a></h2>
+            </div>
+            <div class="col text-center">
+                <p>
+                    @blog.Description
+                </p>
+            </div>
+
+            <div class="row">
+                @foreach (var post in blog.Posts)
+                {
+                    <div class="col-xs-8 col-sm-6">
+                        <p>@post.Title</p>
+                        <p>
+                            @post.Preview
+                        </p>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+
 </div>
