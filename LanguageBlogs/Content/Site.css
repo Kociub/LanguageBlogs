@@ -22,3 +22,7 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.post {
+    border: #000 thin solid;
+}

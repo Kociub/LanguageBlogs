@@ -6,7 +6,6 @@
 
 <div class="row text-center">
     <h1>Language Blogs</h1>
-    <p class="lead">This is a summary of blog entries in the language learning community.</p>
 </div>
 
 <div class="container">
@@ -26,11 +25,13 @@
             <div class="row">
                 @foreach (var post in blog.Posts)
                 {
-                    <div class="col-xs-8 col-sm-6">
-                        <p>@post.Title</p>
-                        <p>
-                            @post.Preview
-                        </p>
+                    <div class="col-xs-4">
+                        <div class="post">
+                            <p>@post.Title</p>
+                            <p>
+                                @post.Preview
+                            </p>
+                        </div>
                     </div>
                 }
             </div>
