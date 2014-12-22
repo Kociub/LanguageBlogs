@@ -24,5 +24,6 @@ textarea {
 }
 
 .post {
-    border: #000 thin solid;
+    border: #808080 thin dashed;
+    padding: 7px;
 }
