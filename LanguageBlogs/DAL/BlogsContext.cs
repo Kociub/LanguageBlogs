@@ -8,7 +8,7 @@ using System.Web;
 
 namespace LanguageBlogs.DAL
 {
-    public class BlogsContext : DbContext
+    public class BlogsContext : DbContext, IBlogsContext
     {
         public BlogsContext()
             : base("BlogsContext")
