@@ -15,8 +15,8 @@ namespace LanguageBlogs.DAL
         {
         }
         
-        public DbSet<Blog> Blogs { get; set; }
-        public DbSet<Post> Posts { get; set; }
+        public IDbSet<Blog> Blogs { get; set; }
+        public IDbSet<Post> Posts { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

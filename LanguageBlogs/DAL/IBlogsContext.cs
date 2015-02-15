@@ -5,7 +5,7 @@ namespace LanguageBlogs.DAL
 {
     public interface IBlogsContext
     {
-        DbSet<Blog> Blogs { get; set; }
-        DbSet<Post> Posts { get; set; }
+        IDbSet<Blog> Blogs { get; set; }
+        IDbSet<Post> Posts { get; set; }
     }
 }
