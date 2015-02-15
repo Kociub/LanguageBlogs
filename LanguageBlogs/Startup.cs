@@ -8,7 +8,7 @@ namespace LanguageBlogs
     {
         public void Configuration(IAppBuilder app)
         {
-            
+
         }
     }
 }

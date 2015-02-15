@@ -14,6 +14,11 @@ namespace LanguageBlogs.Jobs
 
         public void Execute(IJobExecutionContext context)
         {
+            UpdateDatabase(blogsContext);
+        }
+
+        public void UpdateDatabase(IBlogsContext db)
+        {
 
         }
     }
