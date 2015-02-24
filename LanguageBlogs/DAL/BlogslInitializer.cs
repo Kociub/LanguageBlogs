@@ -17,23 +17,27 @@ namespace LanguageBlogs.DAL
                     Title = "Test Blog",
                     Description = "Test Blog Entry",
                     Link = @"http://blog.kociub.com",
+                    RssLink = @"http://blog.kociub.com/feed/",
                     Languages = new List<string>() { "pl", "en" },
                     Posts = new List<Post>
                     {
                         new Post()
                         {
                             Title = "Test Post 1",
-                            Preview = "This is a test post preview" 
+                            Preview = "This is a test post preview",
+                            Link = @"http://blog.kociub.com/float-double-and-decimal-in-c/"
                         },
                         new Post()
                         {
                             Title = "Test Post 2",
-                            Preview = "This is a second test post preview"
+                            Preview = "This is a second test post preview",
+                            Link = @"http://blog.kociub.com/float-double-and-decimal-in-c/"
                         },
                         new Post()
                         {
                             Title = "Test Post 3",
-                            Preview = "This is a third test post preview"
+                            Preview = "This is a third test post preview",
+                            Link = @"http://blog.kociub.com/float-double-and-decimal-in-c/"
                         }
                     }
                 },
@@ -43,23 +47,27 @@ namespace LanguageBlogs.DAL
                     Title = "Test Blog 2",
                     Description = "Test Blog Entry 2",
                     Link = @"http://blog.kociub.com",
+                    RssLink = @"http://blog.kociub.com/feed/",
                     Languages = new List<string>() { "pl", "en" },
                     Posts = new List<Post>
                     {
                         new Post()
                         {
                             Title = "Test Post 1",
-                            Preview = "This is a test post preview" 
+                            Preview = "This is a test post preview" ,
+                            Link = @"http://blog.kociub.com/float-double-and-decimal-in-c/"
                         },
                         new Post()
                         {
                             Title = "Test Post 2",
-                            Preview = "This is a second test post preview"
+                            Preview = "This is a second test post preview",
+                            Link = @"http://blog.kociub.com/float-double-and-decimal-in-c/"
                         },
                         new Post()
                         {
                             Title = "Test Post 3",
-                            Preview = "This is a third test post preview"
+                            Preview = "This is a third test post preview",
+                            Link = @"http://blog.kociub.com/float-double-and-decimal-in-c/"
                         }
                     }
                 }

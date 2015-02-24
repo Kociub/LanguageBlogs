@@ -10,16 +10,11 @@ namespace LanguageBlogs.Controllers
 {
     public class HomeController : Controller
     {
-        private IBlogsContext db;
+        private BlogsContext db;
 
         public HomeController()
         {
             this.db = new BlogsContext();
-        }
-
-        public HomeController(IBlogsContext db)
-        {
-            this.db = db;
         }
 
         public ActionResult Index()

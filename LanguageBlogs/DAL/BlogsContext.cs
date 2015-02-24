@@ -8,15 +8,15 @@ using System.Web;
 
 namespace LanguageBlogs.DAL
 {
-    public class BlogsContext : DbContext, IBlogsContext
+    public class BlogsContext : DbContext
     {
         public BlogsContext()
             : base("BlogsContext")
         {
         }
         
-        public IDbSet<Blog> Blogs { get; set; }
-        public IDbSet<Post> Posts { get; set; }
+        public virtual DbSet<Blog> Blogs { get; set; }
+        public virtual DbSet<Post> Posts { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

@@ -39,9 +39,11 @@ namespace LanguageBlogs
             // Trigger the job to run now, and then every 40 seconds
             ITrigger trigger = TriggerBuilder.Create()
               .WithIdentity("updateTrigger", "updateGroup")
+              .StartAt(new DateTimeOffset(DateTime.Now.AddSeconds(15)))
               .WithSimpleSchedule(x => x
                   .WithIntervalInMinutes(1)
-                  .RepeatForever())
+                  .WithRepeatCount(1))
+                  //.RepeatForever())
               .Build();
 
             sched.ScheduleJob(job, trigger);
