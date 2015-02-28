@@ -25,10 +25,10 @@ namespace LanguageBlogs
         private void InitiateUpdateJob()
         {
             // Construct a scheduler factory
-            ISchedulerFactory schedFact = new StdSchedulerFactory();
+            ISchedulerFactory scheduleFactory = new StdSchedulerFactory();
 
             // Get a scheduler
-            IScheduler sched = schedFact.GetScheduler();
+            IScheduler sched = scheduleFactory.GetScheduler();
             sched.Start();
 
             // Define the job and tie it the UpdateJob class
@@ -36,13 +36,22 @@ namespace LanguageBlogs
                 .WithIdentity("updateJob", "updateGroup")
                 .Build();
 
+            Action<SimpleScheduleBuilder> schedule = null;
+            DateTimeOffset startAt = new DateTimeOffset();
+
+            #if DEBUG
+                schedule = x => x.WithIntervalInMinutes(1).WithRepeatCount(1);
+                startAt = new DateTimeOffset(DateTime.Now.AddSeconds(10));
+            #else
+                schedule = x => x.WithIntervalInHours(12).RepeatForever();
+                startAt = new DateTimeOffset(DateTime.Now.AddSeconds(60));
+            #endif
+
             // Create a trigger
             ITrigger trigger = TriggerBuilder.Create()
               .WithIdentity("updateTrigger", "updateGroup")
-              .StartAt(new DateTimeOffset(DateTime.Now.AddSeconds(15)))
-              .WithSimpleSchedule(x => x
-                  .WithIntervalInMinutes(1)
-                  .WithRepeatCount(1))
+              .StartAt(startAt)
+              .WithSimpleSchedule(schedule)
               .Build();
 
             sched.ScheduleJob(job, trigger);
