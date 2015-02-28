@@ -24,26 +24,25 @@ namespace LanguageBlogs
 
         private void InitiateUpdateJob()
         {
-            // construct a scheduler factory
+            // Construct a scheduler factory
             ISchedulerFactory schedFact = new StdSchedulerFactory();
 
-            // get a scheduler
+            // Get a scheduler
             IScheduler sched = schedFact.GetScheduler();
             sched.Start();
 
-            // define the job and tie it to our HelloJob class
+            // Define the job and tie it the UpdateJob class
             IJobDetail job = JobBuilder.Create<UpdateJob>()
                 .WithIdentity("updateJob", "updateGroup")
                 .Build();
 
-            // Trigger the job to run now, and then every 40 seconds
+            // Create a trigger
             ITrigger trigger = TriggerBuilder.Create()
               .WithIdentity("updateTrigger", "updateGroup")
               .StartAt(new DateTimeOffset(DateTime.Now.AddSeconds(15)))
               .WithSimpleSchedule(x => x
                   .WithIntervalInMinutes(1)
                   .WithRepeatCount(1))
-                  //.RepeatForever())
               .Build();
 
             sched.ScheduleJob(job, trigger);
