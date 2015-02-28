@@ -36,15 +36,12 @@ namespace LanguageBlogs
                 .WithIdentity("updateJob", "updateGroup")
                 .Build();
 
-            Action<SimpleScheduleBuilder> schedule = null;
-            DateTimeOffset startAt = new DateTimeOffset();
+            Action<SimpleScheduleBuilder> schedule = x => x.WithIntervalInHours(12).RepeatForever();
+            DateTimeOffset startAt = new DateTimeOffset(DateTime.Now.AddSeconds(60));
 
             #if DEBUG
                 schedule = x => x.WithIntervalInMinutes(1).WithRepeatCount(1);
                 startAt = new DateTimeOffset(DateTime.Now.AddSeconds(10));
-            #else
-                schedule = x => x.WithIntervalInHours(12).RepeatForever();
-                startAt = new DateTimeOffset(DateTime.Now.AddSeconds(60));
             #endif
 
             // Create a trigger
