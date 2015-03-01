@@ -24,11 +24,15 @@ namespace LanguageBlogs.Jobs
         {
             var blogs = db.Blogs.Include(x => x.Posts);
 
+            Logging.Log.Info("Starting update job");
+
             if (blogs != null)
             {
                 foreach (Blog blog in blogs)
                 {
                     SyndicationFeed feed = FeedService.GetFeed(blog.RssLink);
+
+                    Logging.Log.Info(String.Format("Updating blog {0}",blog.Title));
 
                     blog.ClearPosts();
 
@@ -37,6 +41,8 @@ namespace LanguageBlogs.Jobs
 
                 db.SaveChanges();
             }
+
+            Logging.Log.Info("Finished update job");
         }
     }
 }
