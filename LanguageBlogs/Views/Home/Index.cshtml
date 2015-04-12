@@ -28,9 +28,7 @@
                     <div class="col-md-4">
                         <div class="post">
                             <a href="@post.Link">@post.Title</a>
-                            <p>
-                                @post.Preview
-                            </p>
+                                @Html.Raw(@post.Preview)
                         </div>
                     </div>
                 }
