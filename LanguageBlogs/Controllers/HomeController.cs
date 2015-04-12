@@ -17,9 +17,19 @@ namespace LanguageBlogs.Controllers
             this.db = new BlogsContext();
         }
 
+        //Cache the output for 12 hours
+        [OutputCache(Duration = 43200, VaryByParam = "none")]
         public ActionResult Index()
         {
-            return View(db.Blogs.ToList());
+            try
+            {
+                return View(db.Blogs.ToList());
+            }
+            catch (Exception e)
+            {
+                Logging.Log.Error(e.Message);
+                throw;
+            }
         }
 
         public ActionResult About()
