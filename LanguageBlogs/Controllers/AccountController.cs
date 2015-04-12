@@ -19,7 +19,6 @@ namespace LanguageBlogs.Controllers
     {
         //
         // GET: /Account/Login
-
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
@@ -60,7 +59,7 @@ namespace LanguageBlogs.Controllers
         //
         // GET: /Account/Register
 
-        [AllowAnonymous]
+        [Authorize]
         public ActionResult Register()
         {
             return View();
@@ -70,7 +69,7 @@ namespace LanguageBlogs.Controllers
         // POST: /Account/Register
 
         [HttpPost]
-        [AllowAnonymous]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public ActionResult Register(RegisterModel model)
         {
